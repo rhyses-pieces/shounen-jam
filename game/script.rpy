@@ -1,9 +1,12 @@
-﻿# The script of the game goes in this file.
-
-# Declare characters used by this game. The color argument colorizes the
+﻿# Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
 define e = Character("Eileen")
+define protag = Character("Yuusha", who_color="#ff637f")
+define rival = Character("Ruri", who_color="#b070eb")
+define buddy = Character("Satoru", who_color="#fcc539")
+define antag = Character("Mokusei", who_color="#4cbd56")
+define announcer = Character("Hanako", who_color="#fff")
 
 
 # The game starts here.
@@ -28,6 +31,31 @@ label start:
 
     e "Once you add a story, pictures, and music, you can release it to the world!"
 
+    e "I want to start writing a long dialogue, one that will span at least three lines in order to test your resolve. We will need some kind of result. How many characters can fit inside here?"
+
+    protag "Hi! I'm Yuusha!"
+    rival "And I'm Ruri!"
+    buddy "I'm Satoru!"
+    antag "... My name is Mokusei."
+    announcer "I'm your announcer, Hanako!!"
+
+    e "You have a choice to make."
+
+    menu test_choice:
+        "Say your prayers"
+        "Path one":
+            jump next_time
+        "Choice 2":
+            jump next_time        
+
     # This ends the game.
+
+    return
+
+label next_time:
+    
+    e "It doesn't matter what you choose, in the end."
+
+    e "Farewell!"
 
     return

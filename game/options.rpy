@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Shounen Jam")
+define config.name = _("Super Magical Combat League")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -30,6 +30,13 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+GET READY TO RUMBLE IN THE BIGGEST EVENT OF THE YEAR!!
+
+Yuusha, Ruri, and Satoru are three men competing in the HOTTEST and GNARLIEST tournament in XY City! But what's this?! There's a new big bad in town... and his name is Mokusei!
+
+How will our heroes triumph in this epic battle of wills? Find out on SUPER MAGICAL COMBAT LEAGUE!!
+
+(Tickets for sale next week.)
 """)
 
 

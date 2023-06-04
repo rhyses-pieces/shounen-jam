@@ -39,15 +39,16 @@ init python:
 style window:
     xalign 0.5
     xfill True
-    yalign 1.0
-    ysize 278
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    yalign 0.95
+    ysize 340
+    background Image("gui/textbox.png", xalign=0.5, yalign=0.95)
 
 # Style for the dialogue
 style say_dialogue:
+    color "#000"
     xpos 402
     xsize 1116
-    ypos 75
+    ypos 130
     adjust_spacing False
 
 # The style for dialogue said by the narrator
@@ -56,17 +57,18 @@ style say_thought:
 
 # Style for the box containing the speaker's name
 style namebox:
-    xpos 233
-    xysize (None, None)
-    background Frame("gui/namebox.png", 5, 5, 5, 5, tile=False, xalign=0.0)
+    xpos 360
+    ysize 120
+    xsize 580
+    background Frame("gui/namebox.png", 153, 60, 120, 8, tile=True, xalign=0.0)
     padding (5, 5, 5, 5)
 
 # Style for the text with the speaker's name
 style say_label:
-    color '#cccc00'
-    xalign 0.0
-    yalign 0.5
-    size 45
+    color '#dbcfb1'
+    xpos 155
+    ypos 45
+    size 48
 
 ## Bubble screen ###############################################################
 ##

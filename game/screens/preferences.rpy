@@ -48,6 +48,22 @@ screen preferences():
 
             ## Additional vboxes of type "radio_pref" or "check_pref" can be
             ## added here, to add additional creator-defined preferences.
+            vbox:
+                style_prefix "check"
+                label _("Accessibility")
+                textbutton _("Sound Captions"):
+                    action ToggleVariable("persistent.sound_captions")
+                textbutton _("Image Captions"):
+                    action ToggleVariable("persistent.image_captions")
+                # Self-voicing does not work on smartphone devices, so this option only shows if the user is playing on a PC.
+                if renpy.variant("pc"):
+                    textbutton _("Self-Voicing"):
+                        action Preference("self voicing", "toggle")
+                textbutton _("Timed Choices"):
+                    action ToggleVariable("persistent.timed_choices")
+                # This shows Ren'Py's built-in accessibility menu, added to Ren'Py in Ren'Py 7.2.2. This can also be displayed by pressing "A" on the keyboard when playing on a PC. As this option can break the way the game is displayed and also does not support translation as of Ren'Py build 7.3.2, you may want to hide the option. The button should also be removed if your version of Ren'Py is under 7.2.2, as the menu does not exist in previous versions.
+                textbutton _("More Options..."):
+                    action Show("_accessibility")
 
         null height 60
 
