@@ -45,7 +45,7 @@ style window:
 
 # Style for the dialogue
 style say_dialogue:
-    color "#000"
+    color "#130c17"
     xpos 402
     xsize 1116
     ypos 130

@@ -65,7 +65,7 @@ style hyperlink_text:
     hover_underline True
 
 style gui_text:
-    color '#000'
+    color '#130c17'
     size gui.text_size
     font gui.interface_text_font
 
