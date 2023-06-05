@@ -34,6 +34,7 @@
 
 # This asks the user whether they want to use image or sound captions the first time they boot the game. It uses Ren'Py's splashscreen function - you can add your own splashscreen to this label as well.
 
+default persistent.caption = False
 default persistent.sound_captions = False
 default persistent.image_captions = False
 

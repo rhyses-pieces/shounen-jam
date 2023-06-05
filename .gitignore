@@ -1,7 +1,9 @@
 .vscode/
 **/cache/
+**/saves/
 **/*.txt
 **/*.rpa
 **/*.rpyc
+**/*.rpyc.bak
 **/*.rpym
 **/*.rpymc

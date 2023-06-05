@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Shounen Jam")
+define config.name = _("Super Magical Combat League")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -30,6 +30,13 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+GET READY TO RUMBLE IN THE BIGGEST EVENT OF THE YEAR!!
+
+Yuusha, Ruri, and Satoru are three men competing in the HOTTEST and GNARLIEST tournament in XY City! But what's this?! There's a new big bad in town... and his name is Mokusei!
+
+How will our heroes triumph in this epic battle of wills? Find out on SUPER MAGICAL COMBAT LEAGUE!!
+
+(Tickets for sale next week.)
 """)
 
 
@@ -48,7 +55,7 @@ define build.name = "shounen_jam"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## To allow the user to play a test sound on the sound or voice channel,
@@ -153,6 +160,26 @@ define config.save_directory = "shounen_jam-1685658995"
 define config.window_icon = "gui/window_icon.png"
 
 
+## Custom Options ##############################################################
+##
+## Config variables that I like to have set up.
+
+## Convenience for not crashing on grids without enough items
+## https://www.renpy.org/doc/html/config.html#var-config.allow_underfull_grids
+define config.allow_underfull_grids = True
+
+## Default volume % for the various volume sliders
+## https://www.renpy.org/doc/html/preferences.html#audio-channel-defaults
+define config.default_music_volume = 0.5
+define config.default_sfx_volume = 0.5
+define config.default_voice_volume = 0.5
+
+## The number of auto save slots Ren'Py will save to before it
+## starts overwriting the first one
+define config.autosave_slots = 6
+## Same thing, but for quick save
+define config.quicksave_slots = 6
+
 ## Build configuration #########################################################
 ##
 ## This section controls how Ren'Py turns your project into distribution files.
@@ -183,22 +210,36 @@ init python:
     build.classify('**/.**', None)
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
+    build.classify('**.psd', None)
+    build.classify('game/cache/**', None)
+    ## NOTE: This excludes markdown and txt files. If you use these formats
+    ## for README or instructions, you may want to remove these lines.
+    build.classify('**.txt', None)
+    build.classify('**.md', None)
 
     ## To archive files, classify them as 'archive'.
 
-    # build.classify('game/**.png', 'archive')
-    # build.classify('game/**.jpg', 'archive')
+    build.classify("game/**.rpy", "archive")
+    build.classify("game/**.rpym", "archive")
 
-    ## Files matching documentation patterns are duplicated in a mac app build,
-    ## so they appear in both the app and the zip file.
+    build.classify("game/**.webp", "archive")
+    build.classify("game/**.webm", "archive")
+    build.classify("game/**.mp4", "archive")
+    build.classify("game/**.png", "archive")
+    build.classify("game/**.jpg", "archive")
+    build.classify("game/**.ttf", "archive")
+    build.classify("game/**.otf", "archive")
+    build.classify("game/**.mp3", "archive")
+    build.classify("game/**.wav", "archive")
+    build.classify("game/**.ogg", "archive")
+    build.classify("game/**.opus", "archive")
+    build.classify("game/**.rpyc", "archive")
+    build.classify("game/**.rpymc", "archive")
 
-    build.documentation('*.html')
-    build.documentation('*.txt')
 
-
-## A Google Play license key is required to perform in-app purchases. It can be
-## found in the Google Play developer console, under "Monetize" > "Monetization
-## Setup" > "Licensing".
+## A Google Play license key is required to download expansion files and perform
+## in-app purchases. It can be found on the "Services & APIs" page of the Google
+## Play developer console.
 
 # define build.google_play_key = "..."
 
