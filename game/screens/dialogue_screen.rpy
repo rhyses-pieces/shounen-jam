@@ -39,16 +39,17 @@ init python:
 style window:
     xalign 0.5
     xfill True
-    yalign 0.95
+    yalign 0.9
     ysize 340
-    background Image("gui/textbox.png", xalign=0.5, yalign=0.95)
+    background Image("gui/textbox.png", xalign=0.5, yalign=0.9)
 
 # Style for the dialogue
 style say_dialogue:
     color "#130c17"
-    xpos 402
-    xsize 1116
-    ypos 130
+    xpos 400
+    xsize 1100
+    ypos 135
+    font gui.text_font
     adjust_spacing False
 
 # The style for dialogue said by the narrator
@@ -66,8 +67,8 @@ style namebox:
 # Style for the text with the speaker's name
 style say_label:
     color '#dbcfb1'
-    xpos 155
-    ypos 45
+    xpos 160
+    ypos 50
     size 48
 
 ## Bubble screen ###############################################################
@@ -174,12 +175,51 @@ screen quick_menu():
         hbox:
             style_prefix "quick"
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Prefs") action ShowMenu('preferences')
+            imagebutton:
+                auto "gui/button/back_button_%s.png"
+                action Rollback(greedy=False)
+                tooltip _("Back")
+            imagebutton:
+                auto "gui/button/history_button_%s.png"
+                action ShowMenu('history')
+                tooltip _("History")
+            imagebutton:
+                auto "gui/button/skip_button_%s.png"
+                action Skip()
+                alternate Skip(fast=True, confirm=True)
+                tooltip _("Skip")
+            imagebutton:
+                auto "gui/button/auto_button_%s.png"
+                action Preference("auto-forward", "toggle")
+                tooltip _("Auto forward")
+            imagebutton:
+                auto "gui/button/save_button_%s.png"
+                action ShowMenu('save')
+                tooltip _("Save")
+            imagebutton:
+                auto "gui/button/load_button_%s.png"
+                action ShowMenu('load')
+                tooltip _("Load")
+            imagebutton:
+                auto "gui/button/preferences_button_%s.png"
+                action ShowMenu('preferences')
+                tooltip _("Preferences")
+        
+        $ tooltip = GetTooltip()
+
+        if tooltip:
+            nearrect:
+                focus "tooltip"
+                prefer_top False
+                yoffset 5
+
+                frame:
+                    background "#130c17"
+                    xalign 0.5
+                    xpadding 12
+                    top_padding 2
+                    bottom_padding 6
+                    text tooltip font gui.interface_text_font textalign 0.5 size 24
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -191,17 +231,8 @@ default quick_menu = True
 
 style quick_hbox:
     xalign 0.5
-    yalign 1.0
+    yalign 0.96
     spacing 8
-
-style quick_button:
-    background None
-    padding (15, 6, 15, 0)
-
-style quick_button_text:
-    size 21
-    selected_color '#cccc00'
-    idle_color "#aaa"
 
 
 ## NVL screen ##################################################################

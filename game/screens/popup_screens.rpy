@@ -35,7 +35,7 @@ screen confirm(message, yes_action, no_action=None):
         key "game_menu" action yes_action
 
 style confirm_frame:
-    background Frame("gui/frame.png", 60, 60, 60, 60, tile=False)
+    background Frame("gui/frame.png", 8, 8, 8, 8, tile=False)
     padding (60, 60, 60, 60)
     xalign 0.5
     yalign 0.5
@@ -48,6 +48,7 @@ style confirm_prompt:
     xalign 0.5
 
 style confirm_prompt_text:
+    color '#130c17'
     text_align 0.5
     align (0.5, 0.5)
     layout "subtitle"

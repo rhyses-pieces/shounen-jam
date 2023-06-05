@@ -41,6 +41,7 @@ style choice_button:
 
 style choice_button_text:
     is default # This means it doesn't use the usual button text styling
+    font gui.interface_text_font
     xalign 0.5
     yalign 0.5
     idle_color "#ccc"

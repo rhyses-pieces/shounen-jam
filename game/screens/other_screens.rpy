@@ -9,6 +9,7 @@
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Made for the 2023 Shounen Jam with Ren'py and Asesprite.
 """)
 
 
@@ -196,3 +197,25 @@ style help_label:
 style help_label_text:
     xalign 1.0
     text_align 1.0
+
+
+## Hit Points screen ###########################################################
+##
+## A screen that shows player HP bars
+
+screen hit_points():
+
+    zorder 100
+    
+    bar value AnimatedValue(current_hp, max_hp, delay=1.0):
+        xalign 0.5
+        yalign 0.0
+        xmaximum 400
+        ymaximum 25
+        left_bar Frame('gui/bar/hp_bar_empty.png', 8, 10)
+        right_bar Frame('gui/bar/hp_bar_full.png', 8, 10)
+        thumb None
+        thumb_shadow None
+
+default current_hp = 150
+default max_hp = 150

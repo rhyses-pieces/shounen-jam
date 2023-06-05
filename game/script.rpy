@@ -1,15 +1,4 @@
-﻿# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define e = Character("Eileen")
-define protag = Character("Yuusha", who_color="#ff637f")
-define rival = Character("Ruri", who_color="#b070eb")
-define buddy = Character("Satoru", who_color="#fcc539")
-define antag = Character("Mokusei", who_color="#4cbd56")
-define announcer = Character("Hanako", who_color="#fff")
-
-
-# The game starts here.
+﻿# define variables
 
 label start:
 
@@ -31,7 +20,7 @@ label start:
 
     e "Once you add a story, pictures, and music, you can release it to the world!"
 
-    e "I want to start writing a long dialogue, one that will span at least three lines in order to test your resolve. We will need some kind of result. How many characters can fit inside here?"
+    e "I want to start writing a long dialogue, one that will span at least three lines in order to test your resolve. We will need some kind of result. How many characters can fit inside here? We should be going to {b}hello{/b} there we are trying our best to see the length of the end"
 
     protag "Hi! I'm Yuusha!"
     rival "And I'm Ruri!"
@@ -46,7 +35,7 @@ label start:
         "Path one":
             jump next_time
         "Choice 2":
-            jump next_time        
+            jump test_mettle
 
     # This ends the game.
 
@@ -57,5 +46,34 @@ label next_time:
     e "It doesn't matter what you choose, in the end."
 
     e "Farewell!"
+
+    return
+
+label test_mettle:
+    $ timeout_label = "mettle_failed"
+
+menu mettle_menu:
+    "What say you?!"
+    "Dodge":
+        "You dodge to the side, easily bypassing the attack!"
+        jump mettle_succeed
+    "Freeze":
+        "You freeze up, too spooked to move!"
+        jump mettle_failed
+
+label mettle_succeed:
+    narrator "You succeed! well done, friend."
+    jump next_time
+    return
+
+label mettle_failed:
+    narrator "Oh no! You failed...."
+    jump end
+
+    return
+
+label end:
+    $ timeout_label = None
+    "Game over...."
 
     return

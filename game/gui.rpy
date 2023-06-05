@@ -12,7 +12,6 @@ init python:
     gui.init(1920, 1080)
 
 
-
 ################################################################################
 ## GUI Configuration Variables
 ################################################################################
@@ -23,9 +22,9 @@ init python:
 ## any instances where they are used directly with their value.
 
 # The text font for dialogue and choice menus
-define gui.text_font = gui.preference("font", "fonts/ark-pixel.otf")
+define gui.text_font = gui.preference("font", "Abaddon Bold.ttf")
 # The text font for buttons
-define gui.interface_text_font = gui.preference("interface_font", "DejaVuSans.ttf")
+define gui.interface_text_font = gui.preference("interface_font", "NFPixels-Regular.otf")
 # The default size of in-game text
 define gui.text_size = gui.preference("size", 36)
 # The font for character names
@@ -54,6 +53,7 @@ init offset = -1
 
 style default:
     font gui.text_font
+    antialias False
     hinting 'bytecode'
     size gui.text_size
     language gui.language
@@ -128,4 +128,4 @@ style vslider:
 
 style frame:
     padding (6, 6, 6, 6)
-    background Frame("gui/frame.png", 6, 6, 6, 6, tile=False)
+    background Frame("gui/frame.png", 8, 8, 8, 8, tile=False)
