@@ -26,8 +26,8 @@ define credit_list = [
 screen credits():
     style_prefix "credits"
 
-    frame at credits_scroll(0.5):
-        background "game_menu"
+    frame at credits_scroll(3):
+        background "#00000088"
         xalign 0.5
 
         vbox:
@@ -51,6 +51,7 @@ transform credits_scroll(speed):
     linear speed ypos -720
 
 style credits_header:
+    font gui.interface_text_font
     size 60
 
 style credits_url_button is text_button

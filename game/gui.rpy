@@ -28,7 +28,7 @@ define gui.interface_text_font = gui.preference("interface_font", "NFPixels-Regu
 # The default size of in-game text
 define gui.text_size = gui.preference("size", 36)
 # The font for character names
-define gui.name_text_font = gui.preference("name_font", "DejaVuSans.ttf")
+define gui.name_text_font = gui.preference("name_font", "Sonic2HUD.ttf")
 # The size for character names
 define gui.name_text_size = gui.preference("name_size", 48)
 
@@ -88,8 +88,9 @@ style button_text:
     insensitive_color '#8888887f'
 
 style label_text:
-    is gui_text
+    font gui.name_text_font
     size 36
+    kerning 1
     color '#cccc00'
 
 
@@ -116,16 +117,22 @@ style vscrollbar:
     unscrollable 'hide'
 
 style slider:
-    ysize 38
-    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", 6, 6, 6, 6, tile=False)
+    ysize 44
+    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", 16, 8, tile=True)
+    left_gutter 22
+    right_gutter 16
     thumb "gui/slider/horizontal_[prefix_]thumb.png"
+    thumb_offset 22
 
 style vslider:
-    xsize 38
-    base_bar Frame("gui/slider/vertical_[prefix_]bar.png", 6, 6, 6, 6, tile=False)
+    xsize 44
+    base_bar Frame("gui/slider/vertical_[prefix_]bar.png", 8, 16, tile=True)
+    top_gutter 16
+    bottom_gutter 16
     thumb "gui/slider/vertical_[prefix_]thumb.png"
+    thumb_offset 22
 
 
 style frame:
     padding (6, 6, 6, 6)
-    background Frame("gui/frame.png", 8, 8, 8, 8, tile=False)
+    background Frame("gui/frame.png", 8, 8, tile=False)

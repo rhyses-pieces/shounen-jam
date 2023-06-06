@@ -130,7 +130,7 @@ screen keyboard_help():
         text _("Toggles assistive {a=https://www.renpy.org/l/voicing}self-voicing{/a}.")
 
     hbox:
-        label "Shift+A"
+        label "Shift - A"
         text _("Opens the accessibility menu.")
 
 
@@ -210,10 +210,10 @@ screen hit_points():
     bar value AnimatedValue(current_hp, max_hp, delay=1.0):
         xalign 0.5
         yalign 0.0
-        xmaximum 400
-        ymaximum 25
-        left_bar Frame('gui/bar/hp_bar_empty.png', 8, 10)
-        right_bar Frame('gui/bar/hp_bar_full.png', 8, 10)
+        xmaximum 532
+        ymaximum 48
+        left_bar Frame('gui/bar/left.png', 20, 4)
+        right_bar Frame('gui/bar/right2.png', 20, 4)
         thumb None
         thumb_shadow None
 

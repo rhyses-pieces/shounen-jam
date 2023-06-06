@@ -105,17 +105,23 @@ style skip_hbox:
 style skip_frame:
     is empty
     ypos 15
-    background Frame("gui/skip.png", 24, 8, 75, 8, tile=False)
-    padding (24, 8, 75, 8)
+    xpos 15
+    ymaximum 72
+    background Frame("gui/skip.png", 24, 8, tile=True)
+    padding (40, 16)
 
 style skip_text:
-    size 24
+    font gui.name_text_font
+    color '#130c17'
+    size 36
+    yalign 0.5
 
 style skip_triangle:
     is skip_text
     ## We have to use a font that has the BLACK RIGHT-POINTING SMALL TRIANGLE
     ## glyph in it.
     font "DejaVuSans.ttf"
+    yoffset -4
 
 ## Notify screen ###############################################################
 ##

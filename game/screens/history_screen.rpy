@@ -15,42 +15,46 @@ screen history():
     ## Avoid predicting this screen, as it can be very large.
     predict False
 
-    add "#62a35e72" # The background; can be whatever
+    style_prefix "history"
 
-    use game_menu(_("History"))
+    frame:
 
-    viewport:
-        style_prefix 'game_menu'
-        mousewheel True draggable True pagekeys True
-        scrollbars "vertical" yinitial 1.0
+        label _("History") style "history_title"
 
-        has vbox
+        vpgrid:
+            cols 1
+            yinitial 1.0
+            mousewheel True draggable True pagekeys True
+            scrollbars "vertical"
 
-        style_prefix "history"
+            vbox:
 
-        for h in _history_list:
+                for h in _history_list:
+            
+                    window:
+                        has fixed:
+                            yfit True
 
-            frame:
-                has hbox
-                if h.who:
-                    label h.who style 'history_name':
-                        substitute False
-                        ## Take the color of the who text
-                        ## from the Character, if set
-                        if "color" in h.who_args:
-                            text_color h.who_args["color"]
-                        xsize 200   # this number and the null width
-                                    # number should be the same
-                else:
-                    null width 200
+                        if h.who:
+                            label h.who style 'history_name':
+                                substitute False
+                                ## Take the color of the who text
+                                ## from the Character, if set
+                                if "color" in h.who_args:
+                                    text_color h.who_args["color"]
+                                xsize 200   # this number and the null width
+                                            # number should be the same
+                        else:
+                            null width 200
 
-                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
-                text what:
-                    substitute False
+                        $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+                        text what:
+                            substitute False
 
-        if not _history_list:
-            label _("The dialogue history is empty.")
+                if not _history_list:
+                    label _("The dialogue history is empty.")
 
+        textbutton _("Return") action Return()
 
 ## This determines what tags are allowed to be displayed on the history screen.
 
@@ -58,29 +62,44 @@ define gui.history_allow_tags = { "alt", "noalt", "rt", "rb", "art" }
 
 
 style history_frame:
-    xsize 1400
-    ysize None
-    background None
-
-style history_hbox:
-    spacing 20
+    margin (200, 100)
+    padding (40, 100)
+    background Frame("gui/frame.png", 8, 8)
 
 style history_vbox:
     spacing 20
 
+style history_window:
+    is empty
+    xfill True
+
 style history_name:
-    xalign 1.0
+    xalign 0.0
+    ypadding 4
+    background '#130c17'
 
 style history_name_text:
-    text_align 1.0
-    align (1.0, 0.0)
-    color '#cccc00'
+    font gui.name_text_font
+    text_align 0.5
+    align (0.5, 0.5)
+    color '#dbcfb1'
 
 style history_text:
     text_align 0.0
+    xpos 220
+    xsize 1200
+    color '#130c17'
 
-style history_label:
+style history_title:
     xfill True
+    top_margin -70
 
-style history_label_text:
+style history_title_text:
+    font gui.name_text_font
+    size 60
     xalign 0.5
+
+style history_button:
+    xalign 1.0
+    yalign 1.0
+    yoffset 60

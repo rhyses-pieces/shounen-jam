@@ -66,9 +66,11 @@ style namebox:
 
 # Style for the text with the speaker's name
 style say_label:
+    font gui.name_text_font
     color '#dbcfb1'
+    kerning 1
     xpos 160
-    ypos 50
+    ypos 63
     size 48
 
 ## Bubble screen ###############################################################
@@ -232,7 +234,7 @@ default quick_menu = True
 style quick_hbox:
     xalign 0.5
     yalign 0.96
-    spacing 8
+    spacing 16
 
 
 ## NVL screen ##################################################################

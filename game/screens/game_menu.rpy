@@ -12,6 +12,7 @@
 screen game_menu(title):
 
     style_prefix "game_menu"
+    add Image("gui/game_menu.png")
 
     vbox:
         xpos 60 yalign 0.5
@@ -38,8 +39,6 @@ screen game_menu(title):
         elif not main_menu:
 
             textbutton _("Main Menu") action MainMenu()
-
-        textbutton _("About") action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 

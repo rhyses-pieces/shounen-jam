@@ -35,7 +35,7 @@ screen main_menu():
             ## Help isn't necessary or relevant to mobile devices.
             textbutton _("Help") action ShowMenu("help")
 
-        textbutton _("Credits") action ShowMenu("credits")
+        textbutton _("Credits") action Show("credits")
 
         if renpy.variant("pc"):
 
