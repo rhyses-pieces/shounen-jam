@@ -17,10 +17,14 @@ init -5 python:
             self.credit_list = credit_list
 
 define credit_list = [
-    Credit(name = "Andy", role = "Art, Game Design", url = ""),
+    Credit(name = "Andy", role = "Art, Game Design, UI", url = ""),
     Credit(name = "Lore", role = "Narrative Design, Writing", url = ""),
     Credit(name = "Rhys", role = "Programmer", url = ""),
-    # add assets and credit those
+]
+
+define assets_credit_list = [
+    Credit(name = "arimia", role = "Battle CGs", url = "https://arimia.itch.io/"),
+    Credit(name = "Diablo Luna", role = "BGM", url = "https://pudretediablo.itch.io/"),
 ]
 
 screen credits():
@@ -40,9 +44,16 @@ screen credits():
                     vbox:
                         text credit.name style "credits_name"
                         text credit.role style "credits_role"
-                        
-                        hbox:
-                            textbutton credit.url action OpenURL(credit.url) style "credits_url_button" text_style "credits_url_text"
+                        textbutton credit.url action OpenURL(credit.url) style "credits_url_button" text_style "credits_url_text"
+
+            text "Assets" style "credits_header"
+
+            for credit in assets_credit_list:
+                hbox:
+                    vbox:
+                        text credit.name style "credits_name"
+                        text credit.role style "credits_role"
+                        textbutton credit.url action OpenURL(credit.url) style "credits_url_button" text_style "credits_url_text"
 
     timer 0.5 action Return()
 
@@ -51,19 +62,23 @@ transform credits_scroll(speed):
     linear speed ypos -720
 
 style credits_header:
-    font gui.interface_text_font
+    font gui.name_text_font
     size 60
+
+style category_header:
+    font gui.name_text_font
+    size 48
 
 style credits_url_button is text_button
 
 style credits_name:
-    size 50
+    size 36
     bold True
 
 style credits_role:
-    size 30
+    size 24
 
 # inherit style from hyperlink_text
 style credits_url_text is hyperlink_text
 style credits_url_text:
-    size 18
+    size 24

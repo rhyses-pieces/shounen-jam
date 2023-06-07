@@ -23,7 +23,7 @@ screen choice(items):
             ypos 640
             xysize (680, 48)
             value AnimatedValue(old_value = 1.0, value = 0.0, range = 1.0, delay = timeout)
-            left_bar Frame("gui/bar/right4.png", 20, 4, tile=4)
+            left_bar Frame("gui/bar/right.png", 20, 4, tile=4)
             right_bar Frame("gui/bar/left.png", 20, 4)
 
         

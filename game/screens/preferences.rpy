@@ -13,14 +13,12 @@ screen preferences():
 
     use game_menu(_("Preferences"))
 
-    viewport:
-        style_prefix 'game_menu'
-        mousewheel True draggable True pagekeys True
-        scrollbars "vertical"
+    style_prefix "pref"
+
+    frame:
         has vbox
 
         hbox:
-            box_wrap True
 
             if renpy.variant("pc") or renpy.variant("web"):
                 # Only need fullscreen/windowed on desktop and web builds
@@ -63,13 +61,13 @@ screen preferences():
                         action Preference("self voicing", "toggle")
                 # This shows Ren'Py's built-in accessibility menu, added to Ren'Py in Ren'Py 7.2.2. This can also be displayed by pressing "A" on the keyboard when playing on a PC. As this option can break the way the game is displayed and also does not support translation as of Ren'Py build 7.3.2, you may want to hide the option. The button should also be removed if your version of Ren'Py is under 7.2.2, as the menu does not exist in previous versions.
                 textbutton _("More Options..."):
+                    style_prefix "button"
                     action Show("_accessibility")
 
         null height 60
 
         hbox:
             style_prefix "slider"
-            box_wrap True
 
             vbox:
 
@@ -107,15 +105,20 @@ screen preferences():
                         action Preference("all mute", "toggle")
 
 ### PREF
+style pref_frame:
+    xalign 0.98
+    yalign 0.425
+    background None
+
 style pref_label:
     top_margin 15
-    bottom_margin 3
+    bottom_margin 10
 
 style pref_label_text:
     yalign 1.0
 
 style pref_vbox:
-    xsize 338
+    xsize 340
 
 ## RADIO
 style radio_label:
@@ -126,11 +129,11 @@ style radio_label_text:
 
 style radio_vbox:
     is pref_vbox
-    spacing 0
+    spacing 12
 
 style radio_button:
     foreground "gui/button/radio_[prefix_]foreground.png"
-    padding (27, 6, 6, 6)
+    padding (35, -12, 0, 0)
 
 ## CHECK
 style check_label:
@@ -140,11 +143,11 @@ style check_label_text:
 
 style check_vbox:
     is pref_vbox
-    spacing 0
+    spacing 12
 
 style check_button:
     foreground "gui/button/check_[prefix_]foreground.png"
-    padding (27, 6, 6, 6)
+    padding (35, -12, 0, 0)
 
 ## SLIDER
 style slider_label:
@@ -154,11 +157,12 @@ style slider_label_text:
 
 style slider_slider:
     xsize 525
+    xoffset 20
 
 style slider_button:
     yalign 0.5
-    left_margin 15
+    left_padding 20
 
 style slider_vbox:
     is pref_vbox
-    xsize 675
+    xsize 680

@@ -117,20 +117,21 @@ style vscrollbar:
     unscrollable 'hide'
 
 style slider:
-    ysize 44
-    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", 16, 8, tile=True)
-    left_gutter 22
+    ysize 52
+    yoffset 4
+    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", 16, 12, tile=True)
+    left_gutter 16
     right_gutter 16
     thumb "gui/slider/horizontal_[prefix_]thumb.png"
-    thumb_offset 22
+    thumb_offset 26
 
 style vslider:
-    xsize 44
-    base_bar Frame("gui/slider/vertical_[prefix_]bar.png", 8, 16, tile=True)
+    xsize 52
+    base_bar Frame("gui/slider/vertical_[prefix_]bar.png", 12, 16, tile=True)
     top_gutter 16
     bottom_gutter 16
     thumb "gui/slider/vertical_[prefix_]thumb.png"
-    thumb_offset 22
+    thumb_offset 26
 
 
 style frame:

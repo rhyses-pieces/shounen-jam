@@ -62,7 +62,7 @@ menu mettle_menu:
         jump mettle_failed
 
 label mettle_succeed:
-    narrator "You succeed! well done, friend."
+    narrator "You succeed! well done, friend. Will there be a lot of text?"
     jump next_time
     return
 
