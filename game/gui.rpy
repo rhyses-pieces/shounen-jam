@@ -91,7 +91,7 @@ style label_text:
     font gui.name_text_font
     size 36
     kerning 1
-    color '#cccc00'
+    color '#432641'
 
 
 style bar:
@@ -105,13 +105,13 @@ style vbar:
     bottom_bar Frame("gui/bar/bottom.png", 6, 6, 6, 6, tile=False)
 
 style scrollbar:
-    ysize 18
-    base_bar Frame("gui/scrollbar/horizontal_[prefix_]bar.png", 6, 6, 6, 6, tile=False)
-    thumb Frame("gui/scrollbar/horizontal_[prefix_]thumb.png", 6, 6, 6, 6, tile=False)
+    ysize 24
+    base_bar Frame("gui/scrollbar/horizontal_[prefix_]bar.png", 12, 0, tile=True)
+    thumb Frame("gui/scrollbar/horizontal_[prefix_]thumb.png", 0, 0, tile=False)
     unscrollable 'hide'
 
 style vscrollbar:
-    xsize 18
+    xsize 24
     base_bar Frame("gui/scrollbar/vertical_[prefix_]bar.png", 6, 6, 6, 6, tile=False)
     thumb Frame("gui/scrollbar/vertical_[prefix_]thumb.png", 6, 6, 6, 6, tile=False)
     unscrollable 'hide'

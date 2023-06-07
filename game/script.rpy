@@ -36,6 +36,8 @@ label start:
             jump next_time
         "Choice 2":
             jump test_mettle
+        "Yellow":
+            jump hey_ow
 
     # This ends the game.
 
@@ -49,24 +51,34 @@ label next_time:
 
     return
 
+label hey_ow:
+    narrator "Let's test the hecking hp screen"
+
+    show screen battle_ui(protag, rival)
+
+    narrator "heeh"
+
 label test_mettle:
     $ timeout_label = "mettle_failed"
 
-menu mettle_menu:
-    "What say you?!"
-    "Dodge":
-        "You dodge to the side, easily bypassing the attack!"
-        jump mettle_succeed
-    "Freeze":
-        "You freeze up, too spooked to move!"
-        jump mettle_failed
+    menu mettle_menu:
+        "What say you?!"
+        "Dodge":
+            "You dodge to the side, easily bypassing the attack!"
+            jump mettle_succeed
+        "Freeze":
+            "You freeze up, too spooked to move!"
+            jump mettle_failed
 
 label mettle_succeed:
+    hide screen battle_ui
     narrator "You succeed! well done, friend. Will there be a lot of text?"
     jump next_time
+
     return
 
 label mettle_failed:
+    hide screen battle_ui
     narrator "Oh no! You failed...."
     jump end
 

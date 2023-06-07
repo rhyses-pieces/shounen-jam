@@ -86,8 +86,9 @@ style history_name_text:
 
 style history_text:
     text_align 0.0
+    ypos 6
     xpos 220
-    xsize 1200
+    xsize 1175
     color '#130c17'
 
 style history_title:

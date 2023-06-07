@@ -54,33 +54,33 @@ screen help():
 
     default device = "keyboard"
 
-    add "#e191fe72" # The background; can be whatever
-
     use game_menu(_("Help"))
 
-    viewport:
-        style_prefix 'game_menu'
-        mousewheel True draggable True pagekeys True
-        scrollbars "vertical"
-
-        has vbox
+    frame:
         style_prefix "help"
-        spacing 23
+        
+        vpgrid:
+            cols 1
+            mousewheel True draggable True pagekeys True
+            scrollbars "vertical"
 
-        hbox:
+            vbox:
+                spacing 23
 
-            textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
-            textbutton _("Mouse") action SetScreenVariable("device", "mouse")
+                hbox:
 
-            if GamepadExists():
-                textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
+                    textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
+                    textbutton _("Mouse") action SetScreenVariable("device", "mouse")
 
-        if device == "keyboard":
-            use keyboard_help
-        elif device == "mouse":
-            use mouse_help
-        elif device == "gamepad":
-            use gamepad_help
+                    if GamepadExists():
+                        textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
+
+                if device == "keyboard":
+                    use keyboard_help
+                elif device == "mouse":
+                    use mouse_help
+                elif device == "gamepad":
+                    use gamepad_help
 
 
 screen keyboard_help():
@@ -187,6 +187,16 @@ screen gamepad_help():
     textbutton _("Calibrate") action GamepadCalibrate()
 
 
+style help_frame:
+    xsize 1290
+    ysize 590
+    xpos 520
+    ypos 220
+    background None
+
+style help_vpgrid:
+    xfill True
+
 style help_button:
     xmargin 12
 
@@ -198,24 +208,6 @@ style help_label_text:
     xalign 1.0
     text_align 1.0
 
+style help_text:
+    color '#130c17'
 
-## Hit Points screen ###########################################################
-##
-## A screen that shows player HP bars
-
-screen hit_points():
-
-    zorder 100
-    
-    bar value AnimatedValue(current_hp, max_hp, delay=1.0):
-        xalign 0.5
-        yalign 0.0
-        xmaximum 532
-        ymaximum 48
-        left_bar Frame('gui/bar/left.png', 20, 4)
-        right_bar Frame('gui/bar/right2.png', 20, 4)
-        thumb None
-        thumb_shadow None
-
-default current_hp = 150
-default max_hp = 150
