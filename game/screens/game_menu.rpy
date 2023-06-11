@@ -12,7 +12,7 @@
 screen game_menu(title):
 
     style_prefix "game_menu"
-    add Image("gui/game_menu.png")
+    add Image("gui/game_menu.png") xsize 1920 ysize 1080 
 
     vbox:
         xpos 60 yalign 0.5

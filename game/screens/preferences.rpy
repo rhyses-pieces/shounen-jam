@@ -17,6 +17,7 @@ screen preferences():
 
     frame:
         has vbox
+        xalign 0.5
 
         hbox:
 
@@ -64,7 +65,7 @@ screen preferences():
                     style_prefix "button"
                     action Show("_accessibility")
 
-        null height 60
+        null height 40
 
         hbox:
             style_prefix "slider"
@@ -99,26 +100,27 @@ screen preferences():
                             textbutton _("Test") action Play("voice", config.sample_voice)
 
                 if config.has_music or config.has_sound or config.has_voice:
-                    null height 15
+                    null height 20
                     textbutton _("Mute All"):
                         style_prefix "check"
+                        xpos 20
                         action Preference("all mute", "toggle")
 
 ### PREF
 style pref_frame:
-    xalign 0.98
-    yalign 0.425
-    background None
+    xpos 520
+    yalign 0.5
+    padding (40, 20, 0, 40)
 
 style pref_label:
     top_margin 15
-    bottom_margin 10
+    bottom_margin 5
 
 style pref_label_text:
     yalign 1.0
 
 style pref_vbox:
-    xsize 340
+    xsize 400
 
 ## RADIO
 style radio_label:
@@ -164,5 +166,4 @@ style slider_button:
     left_padding 20
 
 style slider_vbox:
-    is pref_vbox
-    xsize 680
+    xsize 600

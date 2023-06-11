@@ -180,6 +180,9 @@ define config.autosave_slots = 6
 ## Same thing, but for quick save
 define config.quicksave_slots = 6
 
+# for pixel art
+define config.nearest_neighbor = True
+
 ## Build configuration #########################################################
 ##
 ## This section controls how Ren'Py turns your project into distribution files.

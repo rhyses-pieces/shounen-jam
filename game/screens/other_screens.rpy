@@ -190,9 +190,9 @@ screen gamepad_help():
 style help_frame:
     xsize 1290
     ysize 590
-    xpos 520
-    ypos 220
-    background None
+    xpos 500
+    yalign 0.5
+    padding (20, 20)
 
 style help_vpgrid:
     xfill True

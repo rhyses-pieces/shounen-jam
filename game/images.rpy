@@ -28,4 +28,5 @@ layeredimage mokusei:
     group body:
         attribute costume default
         attribute hurt
+        attribute final_form
 

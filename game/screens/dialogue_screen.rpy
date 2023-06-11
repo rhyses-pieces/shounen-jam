@@ -331,10 +331,19 @@ screen ctc(arg=None):
     zorder 100
     style_prefix "ctc"
 
+    add arg
+
     hbox:
-        xalign 0.98
-        yalign 0.98
+        xalign 0.8
+        yalign 0.9
+        at ctc_appear
+        
+        imagebutton:
+            idle "gui/button/continue_button_idle.png"
+            hover "gui/button/continue_button_hover.png"
 
-        add arg
 
-        # add image
+transform ctc_appear:
+    alpha 0.0
+    pause 1.0
+    linear 0.5 alpha 1.0

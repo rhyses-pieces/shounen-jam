@@ -53,8 +53,6 @@ init offset = -1
 
 style default:
     font gui.text_font
-    antialias False
-    hinting 'bytecode'
     size gui.text_size
     language gui.language
 
@@ -118,7 +116,6 @@ style vscrollbar:
 
 style slider:
     ysize 52
-    yoffset 4
     base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", 16, 12, tile=True)
     left_gutter 16
     right_gutter 16

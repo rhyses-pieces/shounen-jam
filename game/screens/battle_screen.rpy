@@ -2,6 +2,17 @@
 ##
 ## A screen that shows HP bars
 
+init -2 python:
+    
+    class Skill(object):
+        """Class used for battle skills"""
+        def __init__(self, name, type, damage):
+            super(Skill, self).__init__()
+            self.name = name
+            self.type = type
+            self.damage = damage
+            
+
 define current_hp = 100
 default max_hp = 100
 define enemy_current_hp = 100
