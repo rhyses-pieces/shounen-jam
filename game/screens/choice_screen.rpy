@@ -6,10 +6,6 @@
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
-default timeout = 5.0
-default timeout_label = None
-default persistent.timed_choices = True
-
 screen choice(items):
     style_prefix "choice"
 
@@ -17,11 +13,6 @@ screen choice(items):
         for i in items:
             textbutton i.caption action i.action
     
-    if (timeout_label is not None) and persistent.timed_choices:
-        bar value AnimatedValue(old_value = 1.0, value = 0.0, range = 1.0, delay = timeout)
-        
-        timer timeout action Jump(timeout_label)
-
 
 style choice_vbox:
     xalign 0.5
@@ -43,10 +34,3 @@ style choice_button_text:
     idle_color "#ccc"
     hover_color "#fff"
     insensitive_color "#444"
-
-style choice_bar:
-    xalign 0.5
-    ypos 640
-    xysize (680, 48)
-    left_bar Frame("gui/bar/right.png", 20, 4, tile=4)
-    right_bar Frame("gui/bar/left.png", 20, 4)

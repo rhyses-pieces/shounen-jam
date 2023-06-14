@@ -53,6 +53,8 @@ init offset = -1
 
 style default:
     font gui.text_font
+    antialias False
+    hinting "bytecode"
     size gui.text_size
     language gui.language
 

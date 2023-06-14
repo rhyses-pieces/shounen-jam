@@ -2,25 +2,54 @@
 ##
 ## A screen that shows HP bars
 
-init -2 python:
-    
-    class Skill(object):
-        """Class used for battle skills"""
-        def __init__(self, name, type, damage):
-            super(Skill, self).__init__()
+init python:
+
+    class Actor(object):
+        """Class that implements HP for players and enemies"""
+        def __init__(self, name, max_hp):
+            super(Actor, self).__init__()
             self.name = name
-            self.type = type
-            self.damage = damage
-            
+            self.hp = max_hp
+            self.max_hp = max_hp
+        
+        def attack(self, power, target):
+            amount = determine_damage(power)
+            target.hp -= amount
+            if target.hp < 0:
+                target.hp = 0
+            return target.hp
 
-define current_hp = 100
-default max_hp = 100
-define enemy_current_hp = 100
-default enemy_max_hp = 100
-define boss_current_hp = 150
-default boss_max_hp = 150
+    def shuffle_combat(l):
+        renpy.random.shuffle(l)
+        return l
 
-screen hit_points(name, xalign, to_flip=False, is_boss=False):
+    def determine_damage(power):
+        if power == "critical":
+            return renpy.random.randint(35, 50)
+        elif power == "moderate":
+            return renpy.random.randint(15, 20)
+        elif power == "minor":
+            return renpy.random.randint(5, 10)
+        else:
+            pass
+    
+    # rudimentary ai
+    def enemy_ai(player_power):
+        if player_power == "critical":
+            return "minor"
+        elif player_power == "moderate":
+            return "moderate"
+        elif player_power == "minor":
+            return "critical"
+        else:
+            pass
+
+default timeout = 5.0
+default timeout_label = None
+default player_power = "none"
+default enemy_power = "none"
+
+screen hit_points(actor, xalign, to_flip=False):
 
     zorder 100
 
@@ -34,20 +63,16 @@ screen hit_points(name, xalign, to_flip=False, is_boss=False):
 
             hbox:
                 if to_flip is True:
-                    text "[name!t]" style "battle_name"
+                    text "[actor.name]" style "battle_name"
                     xalign 1.0
                 else:
-                    text "[name!t]" style "battle_name"
+                    text "[actor.name]" style "battle_name"
             
             hbox:
                 if to_flip is True:
-                    if is_boss is True:
-                        bar value AnimatedValue(boss_current_hp, boss_max_hp, delay=1.0) at flip
-                    else:
-                        bar value AnimatedValue(enemy_current_hp, enemy_max_hp, delay=1.0) at flip
+                    bar value AnimatedValue(actor.hp, actor.max_hp, delay=1.0) at flip
                 else:
-                    bar value AnimatedValue(current_hp, max_hp, delay=1.0)
-                
+                    bar value AnimatedValue(actor.hp, actor.max_hp, delay=1.0)
 
 transform flip:
     xzoom -1.0
@@ -75,7 +100,44 @@ style battle_bar:
 
 screen battle_ui(player, enemy):
     use hit_points(player, 0.0)
-    if enemy is antag:
-        use hit_points(enemy, 1.0, True, True)
-    else:
-        use hit_points(enemy, 1.0, True)
+    use hit_points(enemy, 1.0, True)
+
+screen battle_choice(items):
+    style_prefix "choice"
+    default shuffle_items = shuffle_combat(items)
+
+    vbox:
+        if renpy.in_fixed_rollback():
+            textbutton "Continue..." action Return(renpy.roll_forward_info())
+        else:
+            for i in shuffle_items:
+                textbutton i.caption action [SetVariable("player_power", i.kwargs.get("power", "minor")), i.action]
+
+    if (timeout_label is not None) and persistent.timed_choices and not renpy.in_fixed_rollback():
+        bar value AnimatedValue(old_value = 1.0, value = 0.0, range = 1.0, delay = timeout)
+        
+        timer timeout action Jump(timeout_label)
+
+style choice_bar:
+    xalign 0.5
+    ypos 640
+    xysize (680, 48)
+    left_bar Frame("gui/bar/right.png", 20, 4, tile=4)
+    right_bar Frame("gui/bar/left.png", 20, 4)
+
+
+label battle_loop(player, enemy):
+    
+    $ player.attack(player_power, enemy)
+    $ enemy_power = enemy_ai(player_power)
+    $ enemy.attack(enemy_power, player)
+    
+    $ renpy.block_rollback()
+
+    if player.hp == 0:
+        "You died..."
+        $ renpy.full_restart()
+        return
+    elif enemy.hp == 0:
+        "You won!"
+        return

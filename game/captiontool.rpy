@@ -34,6 +34,7 @@
 
 # This asks the user whether they want to use image or sound captions the first time they boot the game. It uses Ren'Py's splashscreen function - you can add your own splashscreen to this label as well.
 
+default persistent.timed_choices = False
 default persistent.caption = False
 default persistent.sound_captions = False
 default persistent.image_captions = False
@@ -52,6 +53,12 @@ label splashscreen:
             "Do you want image captions on? They describe game visuals in text."
             "On":
                 $ persistent.image_captions = True
+            "Off":
+                pass
+        menu:
+            "Do you want to turn on timed choices? They add a visual timer to combat scenes for added pressure and immersion."
+            "On":
+                $ persistent.timed_choices = True
             "Off":
                 pass
         "These options can be changed at any time in the menu."
