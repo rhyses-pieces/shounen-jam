@@ -50,12 +50,6 @@ screen preferences():
             vbox:
                 style_prefix "check"
                 label _("Accessibility")
-                textbutton _("Sound Captions"):
-                    action ToggleVariable("persistent.sound_captions")
-                textbutton _("Image Captions"):
-                    action ToggleVariable("persistent.image_captions")
-                textbutton _("Timed Choices"):
-                    action ToggleVariable("persistent.timed_choices")
                 # Self-voicing does not work on smartphone devices, so this option only shows if the user is playing on a PC.
                 if renpy.variant("pc"):
                     textbutton _("Self-Voicing"):

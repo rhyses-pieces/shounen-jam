@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Super Magical Combat League")
+define config.name = _("<YOUR GAME NAME>")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -30,13 +30,7 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
-GET READY TO RUMBLE IN THE BIGGEST EVENT OF THE YEAR!!
-
-Yuusha, Ruri, and Satoru are three men competing in the HOTTEST and GNARLIEST tournament in XY City! But what's this?! There's a new big bad in town... and his name is Mokusei!
-
-How will our heroes triumph in this epic battle of wills? Find out on SUPER MAGICAL COMBAT LEAGUE!!
-
-(Tickets for sale next week.)
+A description of your game here!
 """)
 
 
@@ -44,7 +38,7 @@ How will our heroes triumph in this epic battle of wills? Find out on SUPER MAGI
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "shounen_jam"
+define build.name = "<YOUR GAME NAME>"
 
 
 ## Sounds and music ############################################################
@@ -150,7 +144,7 @@ default preferences.afm_time = 15
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "shounen_jam-1685658995"
+define config.save_directory = "<YOUR GAME NAME>-ABUNCHOFNUMBERS"
 
 
 ## Icon ########################################################################
